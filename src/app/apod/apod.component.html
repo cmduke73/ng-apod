@@ -1,0 +1,19 @@
+<div *ngIf="apod" id="apod">
+
+    <button *ngIf="date" routerLink="/apod/{{ date }}">Random</button>
+
+    <h1>{{ apod.title }}</h1>
+
+    <img *ngIf="apod.media_type==='image'" src="{{ apod.url }}" alt="{{ apod.title }}">
+
+    <div *ngIf="apod.media_type==='video'" id="apodVideo">
+      <iframe [src]="apod.url | safe" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div>
+      <span *ngIf="apod.copyright">Copyright: {{ apod.copyright }} </span>
+      {{ apod.date }}
+    </div>
+    <div>{{ apod.explanation }}</div>
+  </div>
+
